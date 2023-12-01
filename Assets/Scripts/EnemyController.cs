@@ -11,12 +11,10 @@ public class EnemyController : Stats
         base.Awake();
         playerRefences = FindObjectOfType<PlayerController>();
     }
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         Movement();
-       
     }
-    
     protected virtual void Movement(){}
 
 
