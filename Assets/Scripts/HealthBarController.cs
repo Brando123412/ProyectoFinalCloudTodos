@@ -15,10 +15,7 @@ public class HealthBarController : MonoBehaviour
     private float _fullWidth;
     private float TargetWidth => currentValue * _fullWidth / maxValue;
     private Coroutine updateHealthBarCoroutine;
-
-    public event Action onHit;
-    public event Action onDeath;
-
+    public int damage;
     private void Start()
     {
         currentValue = maxValue;
@@ -32,7 +29,6 @@ public class HealthBarController : MonoBehaviour
     public void UpdateHealth(int amount)
     {
         currentValue = Mathf.Clamp(currentValue + amount, 0, maxValue);
-        onHit?.Invoke();
 
         if (updateHealthBarCoroutine != null)
         {
@@ -40,15 +36,16 @@ public class HealthBarController : MonoBehaviour
         }
         updateHealthBarCoroutine = StartCoroutine(AdjustWidthBar(amount));
 
-        if (currentValue == 0)
-        {
-            onDeath?.Invoke();
-        }
         Debug.Log("Estoy mas adentro");
+    }
+    public void Update()
+    {
+        UpdateHealth(damage);
     }
 
     IEnumerator AdjustWidthBar(int amount)
     {
+        Debug.Log("Estoy mas adentro55555");
         RectTransform targetBar = amount >= 0 ? modifiedBar : healthBar;
         RectTransform animatedBar = amount >= 0 ? healthBar : modifiedBar;
 
@@ -58,6 +55,7 @@ public class HealthBarController : MonoBehaviour
         {
             animatedBar.sizeDelta = SetWidth(animatedBar, Mathf.Lerp(animatedBar.rect.width, TargetWidth, Time.deltaTime * changeSpeed));
             yield return null;
+            Debug.Log("Est--------------");
         }
 
         animatedBar.sizeDelta = SetWidth(animatedBar, TargetWidth);
