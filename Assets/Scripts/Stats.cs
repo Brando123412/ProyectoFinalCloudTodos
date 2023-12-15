@@ -28,4 +28,8 @@ public class Stats : MonoBehaviour
             OnPlayerDeath?.Invoke();
         }
     }
+    protected virtual void Update()
+    {
+
+    }
 }
