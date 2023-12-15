@@ -5,14 +5,23 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb2d;
-    [SerializeField] float seep;
-
+    [SerializeField] float speed;
+    private Camera mainCamera;
+    Vector3 screenPoint;
     void Awake(){
         rb2d = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
     }
-    void Shooting(Vector3 directionshoot){
-        Vector3 direction = directionshoot - transform.position;
-        direction.Normalize();  
-        rb2d.velocity = new Vector2(direction.x,direction.y)*seep;
+    public void Shooting(Vector3 directionshoot){
+        rb2d.velocity = directionshoot* speed;
+    }
+    void Update()
+    {
+        screenPoint = mainCamera.WorldToViewportPoint(transform.position);
+
+        if (screenPoint.x < 0 || screenPoint.x > 1 || screenPoint.y < 0 || screenPoint.y > 1)
+        {
+            gameObject.SetActive(false); // Desactiva la bala si está fuera de la vista
+        }
     }
 }
