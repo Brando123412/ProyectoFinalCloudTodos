@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 public class EnemyController : Stats
 {
     [SerializeField] protected PlayerController playerRefences;
@@ -16,4 +17,6 @@ public class EnemyController : Stats
         Movement();
     }
     protected virtual void Movement(){}
+    
+
 }
