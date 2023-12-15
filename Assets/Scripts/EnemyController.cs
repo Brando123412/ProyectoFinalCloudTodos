@@ -16,5 +16,4 @@ public class EnemyController : Stats
         Movement();
     }
     protected virtual void Movement(){}
-    
 }

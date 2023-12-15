@@ -4,6 +4,10 @@ using UnityEngine;
 using AI.SteeringBehaviours;
 public class EnemyChicken : EnemyController
 {
+    [SerializeField] objectPulling u;
+    [SerializeField] BulletController bullet;
+
+
     protected override void Movement()
     {
         rb2d.velocity = SteeringBehaviours.Seek(new Vector2(transform.position.x, transform.position.y), new Vector2(rb2d.velocity.x, rb2d.velocity.y),
@@ -14,6 +18,21 @@ public class EnemyChicken : EnemyController
         if (collision.CompareTag("Player"))
         {
 
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            _life--;
+            if (_life <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
