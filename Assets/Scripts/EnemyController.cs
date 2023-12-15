@@ -28,6 +28,6 @@ public class EnemyController : Stats
     }
     public float GetDamage()
     {
-        return _daño;
+        return _damage;
     }
 }

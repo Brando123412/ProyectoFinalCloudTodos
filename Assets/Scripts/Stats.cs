@@ -5,7 +5,7 @@ using System;
 public class Stats : MonoBehaviour
 {
     [SerializeField] protected float _life; /*{ get { return _life; } set { _life=value; } }*/
-    [SerializeField] protected float _da�o;
+    [SerializeField] protected float _damage;
     [SerializeField] protected float velocity;
     [SerializeField] protected string _name;
     [SerializeField] protected Rigidbody2D rb2d;

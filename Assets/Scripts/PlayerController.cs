@@ -84,6 +84,6 @@ public class PlayerController : Stats
     }
     public float GetDamage()
     {
-        return _daño ;
+        return _damage;
     }
 }
