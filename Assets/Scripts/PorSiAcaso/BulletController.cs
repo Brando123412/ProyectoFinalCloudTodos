@@ -21,7 +21,7 @@ public class BulletController : MonoBehaviour
 
         if (screenPoint.x < 0 || screenPoint.x > 1 || screenPoint.y < 0 || screenPoint.y > 1)
         {
-            gameObject.SetActive(false); // Desactiva la bala si está fuera de la vista
+            gameObject.SetActive(false);
         }
     }
 }

@@ -9,6 +9,10 @@ public class PlayerController : Stats
     public PlayerInput playerInput;
     Vector2 objetivo;
 
+    [Header("Pool y Bullet")]
+    [SerializeField] Pool objectPooling;
+    [SerializeField] Transform positionDisparo;
+    GameObject pooledObject;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -18,7 +22,9 @@ public class PlayerController : Stats
 
     void Update()
     {
-        
+        float anguloRadianes = Mathf.Atan2(objetivo.y - transform.position.y, objetivo.x - transform.position.x);
+        float anguloGrados = (180 / Mathf.PI) * anguloRadianes + 90;
+        transform.rotation = Quaternion.Euler(0, 0, anguloGrados);
     }
 
     public void OnMove(InputAction.CallbackContext value)
@@ -44,7 +50,11 @@ public class PlayerController : Stats
         {
             Debug.Log("Estoy apuntando");
             Vector2 tmp = value.ReadValue<Vector2>();
+            tmp = new Vector2(tmp.x - transform.position.x, tmp.y - transform.position.y);
             objetivo = Camera.main.ScreenToWorldPoint(tmp);
+            objetivo = objetivo - new Vector2(transform.position.x, transform.position.y);
+
+            //objetivo.Normalize();
         }
         
     }
@@ -52,15 +62,28 @@ public class PlayerController : Stats
     {
         if (value.started)
         {
-            Debug.Log("Ataack1");
+            pooledObject = objectPooling.GetPooledObject();
+            if (pooledObject != null)
+            {
+                pooledObject.transform.position = positionDisparo.position;
+
+                Vector2 shootDirection = objetivo - new Vector2(positionDisparo.position.x, positionDisparo.position.y);
+                shootDirection.Normalize();
+
+                float angleRadians = Mathf.Atan2(shootDirection.y, shootDirection.x);
+                float angleDegrees = angleRadians * Mathf.Rad2Deg;
+
+                pooledObject.transform.rotation = Quaternion.Euler(0, 0, angleDegrees);
+                pooledObject.SetActive(true);
+                pooledObject.GetComponent<BulletController>().Shooting(shootDirection);
+            }
         }
 
     }
+    
     private void FixedUpdate()
     {
-        float anguloRadianes = Mathf.Atan2(objetivo.y - transform.position.y, objetivo.x - transform.position.x);
-        float anguloGrados = (180 / Mathf.PI) * anguloRadianes - 90;
-        transform.rotation = Quaternion.Euler(0, 0, anguloGrados);
+      
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
