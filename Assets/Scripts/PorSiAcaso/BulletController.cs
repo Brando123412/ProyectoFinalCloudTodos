@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb2d;
     [SerializeField] float speed;
+    [SerializeField] public float damage;
     private Camera mainCamera;
     Vector3 screenPoint;
     void Awake(){

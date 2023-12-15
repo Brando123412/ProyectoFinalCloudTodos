@@ -76,7 +76,14 @@ public class HealthBarController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            OnLifeUpdated?.Invoke(collision.GetComponent<EnemyController>().GetDamage());
+            if (collision.GetComponent<EnemyController>() != null)
+            {
+                OnLifeUpdated?.Invoke(collision.GetComponent<EnemyController>().GetDamage());
+            }else if(collision.GetComponent<BulletController>()!= null)
+            {
+                OnLifeUpdated?.Invoke(collision.GetComponent<BulletController>().damage);
+            }
+            
             collision.GetComponent<EnemyController>().setLife(currentValue);
         }
         if (collision.gameObject.tag == "Player")
@@ -84,6 +91,12 @@ public class HealthBarController : MonoBehaviour
             OnLifeUpdated?.Invoke(collision.GetComponent<PlayerController>().GetDamage());
             collision.GetComponent<PlayerController>().setLife(currentValue);
         }
-        
+        if (collision.gameObject.tag == "Bullet" && gameObject.tag == "Enemy")
+        {
+            OnLifeUpdated?.Invoke(collision.GetComponent<BulletController>().damage);
+            Debug.Log(collision.GetComponent<BulletController>().damage);
+            Debug.Log(collision.GetComponent<EnemyController>());
+            collision.GetComponent<EnemyController>().setLife(currentValue);
+        }
     }
 }
