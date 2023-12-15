@@ -17,6 +17,17 @@ public class EnemyController : Stats
         Movement();
     }
     protected virtual void Movement(){}
-    
 
+    public float GetLife()
+    {
+        return _life;
+    }
+    public void setLife(float newLife)
+    {
+        _life = newLife;
+    }
+    public float GetDamage()
+    {
+        return _daño;
+    }
 }
