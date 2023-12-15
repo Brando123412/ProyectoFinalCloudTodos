@@ -474,6 +474,14 @@ PrefabInstance:
       value: pig
       objectReference: {fileID: 0}
     - target: {fileID: 4353016882959694308, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353016882959694308, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353016882959694308, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.31
       objectReference: {fileID: 0}
@@ -512,6 +520,34 @@ PrefabInstance:
     - target: {fileID: 4353016882959694308, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_Size.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c51b22ce086866540bfd1ec584c6c571, type: 3}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529926488536867559, guid: 37c9a643a843dc94d8170325ef3e7036, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
