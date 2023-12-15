@@ -61,4 +61,19 @@ public class PlayerController : Stats
         float anguloGrados = (180 / Mathf.PI) * anguloRadianes - 90;
         transform.rotation = Quaternion.Euler(0, 0, anguloGrados);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+
+        }
+        if (collision.gameObject.tag == "Buff")
+        {
+
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+
+        }
+    }
 }
