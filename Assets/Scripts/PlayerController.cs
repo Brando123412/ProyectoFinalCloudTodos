@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 public class PlayerController : Stats
 {
     [Header("Movimientos")]
@@ -63,10 +64,6 @@ public class PlayerController : Stats
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-
-        }
         if (collision.gameObject.tag == "Buff")
         {
 
@@ -75,5 +72,18 @@ public class PlayerController : Stats
         {
 
         }
+    }
+
+    public float GetLife()
+    {
+        return _life;
+    }
+    public void setLife(float newLife)
+    {
+        _life = newLife;
+    }
+    public float GetDamage()
+    {
+        return _damage;
     }
 }
