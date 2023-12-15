@@ -16,6 +16,7 @@ public class Stats : MonoBehaviour
     protected virtual void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     protected virtual void UpdateLife(float damageAmount)
     {
